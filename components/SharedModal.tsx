@@ -15,6 +15,8 @@ import {
 
 import { range } from '@lib/range'
 import { variants } from '@lib/animationVariants'
+import downloadPhoto from '@lib/downloadPhoto'
+import { Twitter } from './icons'
 
 import type { SharedModalProps, ImageProps } from '@types'
 
