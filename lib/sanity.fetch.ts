@@ -2,9 +2,10 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@lib/sanity.client'
 import { revalidateSecret } from '@lib/sanity.api'
-import { eventBySlug, eventsByYear } from './sanity.queries'
+import { categoryBySlug, eventBySlug, eventsByYear } from './sanity.queries'
 
 import type { QueryParams } from '@sanity/client'
+import { type CategoryProps, type EventProps } from '@types'
 
 export const token = process.env.SANITY_API_READ_TOKEN
 
@@ -47,7 +48,7 @@ export async function sanityFetch<QueryResponse>({
 }
 
 export function getEventBySlug(slug: string) {
-  return sanityFetch({
+  return sanityFetch<EventProps>({
     query: eventBySlug,
     params: { slug },
     tags: [`event:${slug}`],
@@ -59,5 +60,14 @@ export function getEventsByYear(year: number) {
     query: eventsByYear,
     params: { year },
     tags: [`events:${year}`],
+  })
+}
+
+export function getCategoryBySlug(slug: string) {
+  console.log('getCategoryBySlug', slug)
+  return sanityFetch<CategoryProps>({
+    query: categoryBySlug,
+    params: { slug },
+    tags: [`category:${slug}`],
   })
 }

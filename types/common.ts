@@ -1,18 +1,17 @@
-export interface ImageProps {
-  id: number
-  height: string
-  width: string
-  public_id: string
-  format: string
-  blurDataUrl?: string
+import type { Image } from 'sanity'
+
+export interface EventProps {
+  _id: string
+  title: string
+  slug: string
+  description: string
+  date: string
+  images: Image[]
 }
 
-export interface SharedModalProps {
-  index: number
-  images?: ImageProps[]
-  currentPhoto?: ImageProps
-  changePhotoId: (newVal: number) => void
-  closeModal: () => void
-  navigation: boolean
-  direction?: number
+export interface CategoryProps {
+  title: string
+  slug: string
+  description: string
+  events: EventProps[] & { categorySlug: string }
 }

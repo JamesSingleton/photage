@@ -35,6 +35,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{ type: 'category' }],
+    }),
+    defineField({
       type: 'array',
       name: 'images',
       title: 'Images',
