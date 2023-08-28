@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@sanity/icons": "^2.4.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.15.1",
     "cloudinary": "^1.40.0",
@@ -23,7 +24,8 @@
     "react-swipeable": "^7.0.1",
     "react-use-keypress": "^1.3.1",
     "sanity": "^3.15.1",
-    "styled-components": "5.2"
+    "sanity-plugin-cloudinary": "^1.1.1",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@types/node": "^20.5.6",
