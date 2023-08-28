@@ -10,9 +10,8 @@ export const eventBySlug = groq`
   }
 `
 
-// get events in a certain year
 export const eventsByYear = groq`
-  *[_type == "event" && date == $year] {
+  *[_type == "event" && dateTime(date) == dateTime($year)] {
     title,
     slug,
     description,

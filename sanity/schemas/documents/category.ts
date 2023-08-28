@@ -1,11 +1,9 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { defineType, defineField } from 'sanity'
 
 export default defineType({
   type: 'document',
-  name: 'event',
-  title: 'Event',
-  icon: DocumentIcon,
+  name: 'category',
+  title: 'Category',
   fields: [
     defineField({
       type: 'string',
@@ -27,18 +25,6 @@ export default defineType({
       name: 'description',
       title: 'Description',
       description: 'This is a block of text that will be displayed at the top of the page.',
-    }),
-    defineField({
-      type: 'date',
-      name: 'date',
-      title: 'Date',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      type: 'array',
-      name: 'images',
-      title: 'Images',
-      of: [{ type: 'cloudinary.asset' }],
     }),
   ],
 })
