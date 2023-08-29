@@ -36,3 +36,12 @@ export const categoryBySlug = groq`
     }
   }
 `
+
+export const allCategories = groq`
+  *[_type == "category"] {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+  }
+`

@@ -23,7 +23,7 @@
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.1",
-    "lucide-react": "^0.269.0",
+    "lucide-react": "^0.271.0",
     "next": "^13.4.19",
     "next-sanity": "^5.4.6",
     "react": "^18.2.0",
@@ -35,8 +35,7 @@
     "sanity-image": "^0.1.6",
     "sanity-plugin-cloudinary": "^1.1.1",
     "styled-components": "^5.3.11",
-    "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -46,9 +45,10 @@
     "eslint": "^8.48.0",
     "eslint-config-next": "^13.4.19",
     "postcss": "^8.4.28",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.3",
     "tailwindcss": "^3.3.3",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.2.2"
   }
 }
