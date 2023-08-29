@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { parseISO, format } from 'date-fns'
 
@@ -29,7 +28,7 @@ export default async function EventPage({ params }: { params: { event: string } 
         {event.images.map((image, i) => (
           <Image
             key={image._key}
-            src={image.url}
+            src={image.secure_url}
             width={250}
             height={330}
             alt={`${event.title} - ${i}`}

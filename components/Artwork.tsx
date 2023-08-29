@@ -30,7 +30,7 @@ export function Artwork({
       >
         <div className="overflow-hidden rounded-md">
           <Image
-            src={firstImage.url}
+            src={firstImage.secure_url}
             alt={event.title}
             width={width}
             height={height}
