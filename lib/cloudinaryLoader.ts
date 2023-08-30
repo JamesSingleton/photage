@@ -7,14 +7,23 @@ export default function loader({
   width: number
   quality?: string
 }) {
-  const params = ['f_auto', 'c_limit', 'w_' + width, 'q_' + (quality || 'auto')]
+  // Extract the version and filename from the Cloudinary URL
+  const match = src.match(/\/v(\d+)\/(.+\.\w+)$/)
 
-  src = src.replace(
-    `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/`,
-    '',
-  )
+  if (!match) {
+    // Handle invalid URL format
+    return src
+  }
 
-  return `https://res.cloudinary.com/${
+  const [, version, filename] = match
+
+  // Define your Cloudinary transformation parameters
+  const transformations = [`w_${width || 800}`, `q_${quality || 'auto'}`, 'c_scale']
+
+  // Construct the new Cloudinary URL with transformations
+  const transformedURL = `https://res.cloudinary.com/${
     process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-  }/image/upload/${params.join(',')}/${src}`
+  }/image/upload/${transformations.join(',')}/v${version}/${filename}`
+
+  return transformedURL
 }

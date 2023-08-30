@@ -22,6 +22,7 @@ export interface CloudinaryImage {
   width: number
   duration: null
   _version: number
+  context: { custom: { alt: string } }
 }
 
 export interface EventProps {
@@ -31,6 +32,7 @@ export interface EventProps {
   description: string
   date: string
   images: CloudinaryImage[]
+  categorySlug: string
 }
 
 export interface CategoryProps {
@@ -38,5 +40,5 @@ export interface CategoryProps {
   title: string
   slug: string
   description: string
-  events: EventProps[] & { categorySlug: string }
+  events: EventProps[]
 }

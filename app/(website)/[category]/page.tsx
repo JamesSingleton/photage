@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
+import { parseISO, format } from 'date-fns'
 
 import { getCategoryBySlug } from '@lib/sanity.fetch'
-import { Artwork } from '@components/Artwork'
 import { Separator } from '@components/ui/separator'
 
 import type { Metadata } from 'next'
@@ -33,17 +35,40 @@ export default async function CategoryPage({ params }: { params: { category: str
         <p className="text-sm text-muted-foreground">{data.description}</p>
       </div>
       <Separator className="my-4" />
-      <div className="flex space-x-4 pb-4">
-        {data.events.map((event) => {
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {data.events.map((event, i) => {
           return (
-            <Artwork
+            <Link
+              className="after:content after:shadow-highlight group relative mb-5 block w-full after:pointer-events-none after:absolute after:inset-0 after:rounded-lg"
               key={event._id}
-              aspectRatio="portrait"
-              event={event}
-              width={250}
-              height={330}
-              className="w-[250px]"
-            />
+              href={`/${event.categorySlug}/${new Date(event.date).getFullYear()}/${event.slug}`}
+            >
+              <div className="mb-5">
+                <Image
+                  alt={
+                    event.images[0].context
+                      ? event.images[0].context.custom.alt
+                      : `${event.title} - ${i}`
+                  }
+                  className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                  src={event.images[0].secure_url}
+                  width={720}
+                  height={480}
+                  sizes="(max-width: 640px) 100vw,
+           (max-width: 1280px) 50vw,
+           (max-width: 1536px) 33vw,
+           25vw"
+                />
+                <div className="mt-4 text-sm">
+                  <h3 className="font-medium leading-none">{event.title}</h3>
+                  {event.date && (
+                    <p className="text-xs text-muted-foreground">
+                      {format(parseISO(event.date), 'MMM d, yyyy')}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Link>
           )
         })}
       </div>
